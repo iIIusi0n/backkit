@@ -1,10 +1,14 @@
+// Package for networking.
 package network
 
 import (
 	"encoding/json"
+	"errors"
 	"net"
 )
 
+// Get public IP of current device.
+// To get public IP, it will send http request to external web service.
 func GetPublicIP() (string, error) {
 	type IpResponse struct {
 		IP string `json:"ip"`
@@ -24,6 +28,9 @@ func GetPublicIP() (string, error) {
 		}
 	}
 	if rawIpResp == "" {
+		if err == nil {
+			err = errors.New("service not working")
+		}
 		return "", err
 	}
 	var parsedIpResp IpResponse
@@ -34,6 +41,7 @@ func GetPublicIP() (string, error) {
 	return parsedIpResp.IP, nil
 }
 
+// Get private IP of current device.
 func GetPrivateIP() (string, error) {
 	conn, err := net.Dial("udp", "8.8.8.8:80")
 	if err != nil {

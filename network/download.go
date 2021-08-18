@@ -1,3 +1,4 @@
+// Package for networking.
 package network
 
 import (
@@ -7,6 +8,7 @@ import (
 	"os"
 )
 
+// Download file from url then save to path.
 func DownloadFile(url, path string) error {
 	resp, err := http.Get(url)
 	if err != nil {
@@ -24,6 +26,7 @@ func DownloadFile(url, path string) error {
 	return err
 }
 
+// Download string from url then return downloaded string.
 func DownloadString(url string) (string, error) {
 	resp, err := http.Get(url)
 	if err != nil {

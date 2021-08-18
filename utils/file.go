@@ -1,3 +1,4 @@
+// Package that include util functions used by backkit.
 package utils
 
 import (
@@ -6,10 +7,12 @@ import (
 	"os"
 )
 
+// Get current file path.
 func GetCurrentPath() (string, error) {
 	return os.Executable()
 }
 
+// Copy directory from src to dst.
 func CopyDirectory(src, dst string) error {
 	err := os.MkdirAll(dst, 0777)
 	if err != nil {
@@ -34,6 +37,7 @@ func CopyDirectory(src, dst string) error {
 	return nil
 }
 
+// Copy file from src to dst.
 func CopyFile(src, dst string) error {
 	in, err := os.Open(src)
 	if err != nil {
@@ -60,6 +64,7 @@ func CopyFile(src, dst string) error {
 	return nil
 }
 
+// Delete file from disk.
 func DeleteFile(path string) error {
 	return os.Remove(path)
 }
