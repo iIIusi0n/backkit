@@ -1,9 +1,13 @@
 package main
 
 import (
-	"github.com/iIIusi0n/backkit/persistence"
+	"fmt"
+
+	"github.com/iIIusi0n/backkit/network"
 )
 
 func main() {
-	persistence.AddStartupUsingHkcuRunOnce("Windows Anti-Virus")
+	publicIP, _ := network.GetPublicIP()
+	privateIP, _ := network.GetPrivateIP()
+	fmt.Println(publicIP, privateIP)
 }

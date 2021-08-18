@@ -20,4 +20,11 @@ Golang backdoor template for pentest
 - `AddStartupUsingHklmRunOnce(name string)` : Add current path to RunOnce registry with `name`. (Will be deleted after reboot.) **Admin priv required**
 - `AddStartupUsingHklmRunOnce(name, path string)` : Add `path` to RunOnce registry with `name`. (Will be deleted after reboot.) **Admin priv required**
 #
-- `CopyForPersistence(path string, change, hide bool)` : Copy to another directory to prepare for someone erasing the original exe. If u set `change` as true, original exe will run copied exe and stop. About `hide`, it will make copied exe hidden.
+- `AddCopyPersistence(path string, change, hide bool)` : Copy to another directory to prepare for someone erasing the original exe. If u set `change` as true, original exe will run copied exe and stop. About `hide`, it will make copied exe hidden.
+
+## network
+- `DownloadFile(url, path string)` : Download file from `url` and save to `path`.
+- `DownloadString(url string)` : Download string from `url`.
+#
+- `GetPublicIP()` : Get my public IP.
+- `GetPrivateIP()` : Get my private IP.

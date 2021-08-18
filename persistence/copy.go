@@ -7,7 +7,7 @@ import (
 	"github.com/iIIusi0n/backkit/utils"
 )
 
-func CopyForPersistence(path string, change, hide bool) error {
+func AddCopyPersistence(path string, change, hide bool) error {
 	currentPath, err := utils.GetCurrentPath()
 	if err != nil {
 		return err
