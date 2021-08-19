@@ -6,6 +6,21 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
+// Delete key in HKCU Run registry for startup.
+func DeleteHkcuRunStartup(name string) error {
+	key, err := registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\Run`, registry.QUERY_VALUE|registry.SET_VALUE)
+	if err != nil {
+		return err
+	}
+	if err := key.DeleteValue(name); err != nil {
+		return err
+	}
+	if err := key.Close(); err != nil {
+		return err
+	}
+	return nil
+}
+
 // Add executable file to startup using Run registry in HKCU.
 // AddStartupUsingHkcuRun(name, path) will add file in path to registry with key name.
 // You can ignore path like AddStartupUsingHkcuRun(name), then it will add current file to registry.
@@ -40,6 +55,21 @@ func addCurrentFileToStartupUsingHkcuRun(name string) error {
 		return err
 	}
 	return addExternalFileToStartupUsingHkcuRun(name, currentPath)
+}
+
+// Delete key in HKCU RunOnce registry for startup.
+func DeleteHkcuRunOnceStartup(name string) error {
+	key, err := registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\RunOnce`, registry.QUERY_VALUE|registry.SET_VALUE)
+	if err != nil {
+		return err
+	}
+	if err := key.DeleteValue(name); err != nil {
+		return err
+	}
+	if err := key.Close(); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Add executable file to startup using RunOnce registry in HKCU.
@@ -79,6 +109,21 @@ func addCurrentFileToStartupUsingHkcuRunOnce(name string) error {
 	return addExternalFileToStartupUsingHkcuRunOnce(name, currentPath)
 }
 
+// Delete key in HKLM Run registry for startup.
+func DeleteHklmRunStartup(name string) error {
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `Software\Microsoft\Windows\CurrentVersion\Run`, registry.QUERY_VALUE|registry.SET_VALUE)
+	if err != nil {
+		return err
+	}
+	if err := key.DeleteValue(name); err != nil {
+		return err
+	}
+	if err := key.Close(); err != nil {
+		return err
+	}
+	return nil
+}
+
 // Add executable file to startup using Run registry in HKLM.
 // AddStartupUsingHkcuRun(name, path) will add file in path to registry with key name.
 // You can ignore path like AddStartupUsingHkcuRun(name), then it will add current file to registry.
@@ -114,6 +159,21 @@ func addCurrentFileToStartupUsingHklmRun(name string) error {
 		return err
 	}
 	return addExternalFileToStartupUsingHklmRun(name, currentPath)
+}
+
+// Delete key in HKLM RunOnce registry for startup.
+func DeleteHklmRunOnceStartup(name string) error {
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `Software\Microsoft\Windows\CurrentVersion\RunOnce`, registry.QUERY_VALUE|registry.SET_VALUE)
+	if err != nil {
+		return err
+	}
+	if err := key.DeleteValue(name); err != nil {
+		return err
+	}
+	if err := key.Close(); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Add executable file to startup using RunOnce registry in HKLM.
