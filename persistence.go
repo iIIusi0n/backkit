@@ -28,7 +28,7 @@ func AddCopyPersistence(path string, change, hide bool) error {
 		}
 	}
 	if change {
-		err := RunExecutable(path, true)
+		_, err := RunExecutable(path, true)
 		if err != nil {
 			return err
 		}

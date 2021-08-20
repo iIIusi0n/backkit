@@ -7,7 +7,7 @@ import (
 )
 
 func TestHkcuRunStartup(t *testing.T) {
-	if err := backkit.AddStartupUsingHkcuRun("backkit_test"); err != nil {
+	if err := backkit.AddCurrentFileToStartupUsingHkcuRun("backkit_test"); err != nil {
 		t.Error(err.Error())
 	}
 	if err := backkit.DeleteHkcuRunStartup("backkit_test"); err != nil {
@@ -16,7 +16,7 @@ func TestHkcuRunStartup(t *testing.T) {
 }
 
 func TestHkcuRunOnceStartup(t *testing.T) {
-	if err := backkit.AddStartupUsingHkcuRunOnce("backkit_test"); err != nil {
+	if err := backkit.AddCurrentFileToStartupUsingHkcuRunOnce("backkit_test"); err != nil {
 		t.Error(err.Error())
 	}
 	if err := backkit.DeleteHkcuRunOnceStartup("backkit_test"); err != nil {
@@ -25,7 +25,7 @@ func TestHkcuRunOnceStartup(t *testing.T) {
 }
 
 func TestHklmRunStartup(t *testing.T) {
-	if err := backkit.AddStartupUsingHklmRun("backkit_test"); err != nil {
+	if err := backkit.AddCurrentFileToStartupUsingHklmRun("backkit_test"); err != nil {
 		t.Error(err.Error())
 	}
 	if err := backkit.DeleteHklmRunStartup("backkit_test"); err != nil {
@@ -34,7 +34,7 @@ func TestHklmRunStartup(t *testing.T) {
 }
 
 func TestHklmRunOnceStartup(t *testing.T) {
-	if err := backkit.AddStartupUsingHklmRunOnce("backkit_test"); err != nil {
+	if err := backkit.AddCurrentFileToStartupUsingHklmRunOnce("backkit_test"); err != nil {
 		t.Error(err.Error())
 	}
 	if err := backkit.DeleteHklmRunOnceStartup("backkit_test"); err != nil {
