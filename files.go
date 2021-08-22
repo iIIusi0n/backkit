@@ -63,7 +63,7 @@ func CopyFile(src, dst string) error {
 	return nil
 }
 
-// Delete file from disk.
-func DeleteFile(path string) error {
+// Remove file from disk.
+func RemoveFile(path string) error {
 	return os.Remove(path)
 }
