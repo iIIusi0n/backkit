@@ -1,7 +1,7 @@
 package backkit
 
 import (
-	"fmt"
+	"encoding/hex"
 	"math/rand"
 )
 
@@ -17,5 +17,11 @@ func GetRandomString(n int) string {
 
 // Change byte array to hex string.
 func ByteToHexString(b [32]byte) string {
-	return fmt.Sprintf("%x", b)
+	return hex.EncodeToString(b[:])
+}
+
+// Change byte array to hex string.
+func HexStringToByte(str string) []byte {
+	b, _ := hex.DecodeString(str)
+	return b
 }
