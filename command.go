@@ -6,13 +6,13 @@ import (
 	"io/ioutil"
 )
 
-type Command struct {
+type command struct {
 	Type string   `json:"type"`
 	Args []string `json:"args"`
 }
 
-type Commands struct {
-	Commands []Command `json:"commands"`
+type commands struct {
+	Commands []command `json:"commands"`
 }
 
 func (h *Handler) parseReceivedCommand(body io.ReadCloser) error {
@@ -23,7 +23,7 @@ func (h *Handler) parseReceivedCommand(body io.ReadCloser) error {
 	bodyString := string(bodyBytes)
 	decodedBody := HexStringToByte(bodyString)
 
-	var receivedCommand Commands
+	var receivedCommand commands
 	err = json.Unmarshal(decodedBody, &receivedCommand)
 	if err != nil {
 		return err
