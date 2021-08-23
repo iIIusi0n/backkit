@@ -1,4 +1,4 @@
-# backkit
+# backkit [![CodeFactor](https://www.codefactor.io/repository/github/iiiusi0n/backkit/badge)](https://www.codefactor.io/repository/github/iiiusi0n/backkit)
 Golang package for pentest
 
 ## Documentation
