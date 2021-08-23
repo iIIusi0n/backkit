@@ -1,6 +1,9 @@
 package backkit
 
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 // Generate random string.
 func GetRandomString(n int) string {
@@ -10,4 +13,9 @@ func GetRandomString(n int) string {
 		b[i] = letterBytes[rand.Intn(len(letterBytes))]
 	}
 	return string(b)
+}
+
+// Change byte array to hex string.
+func ByteToHexString(b [32]byte) string {
+	return fmt.Sprintf("%x", b)
 }
